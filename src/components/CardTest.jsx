@@ -10,13 +10,13 @@ export default function ActionAreaCard({ valve_id, timestamp, arr_data }) {
         <Card sx={{ maxWidth: 345 }} style={{ backgroundColor: '#A2C6D8' }}>
             <CardActionArea>
                 <LineChart
-                    xAxis={[{ data: arr_data.map(val => val.pair) }]} //pair
+                    xAxis={[{ data: arr_data.map(val => val.angle) }]} //pair
                     series={[{
-                        data: arr_data.map(val => val.angle),
+                        data: arr_data.map(val => val.pair),
                         area: true,
                         showMark: false
                     }]} //angle
-                    height={300}
+                    height={230}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
