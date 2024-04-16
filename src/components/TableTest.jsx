@@ -10,17 +10,17 @@ import Paper from '@mui/material/Paper'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: '#78A3C5',
         color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
+        fontSize: 13,
     },
 }))
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
+        backgroundColor: '#CAD8E6',
     },
     // hide last border
     '&:last-child td, &:last-child th': {
@@ -28,10 +28,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }))
 
-export default function CustomPaginationActionsTable({ rows }) {
+export default function TableTest({ rows }) {
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 300 }} aria-label="custom pagination table">
+            <Table sx={{ minWidth: 150 }} aria-label="custom pagination table">
                 <TableHead>
                     <TableRow>
                         <StyledTableCell align="left">Angle&nbsp;(°)</StyledTableCell>
