@@ -9,7 +9,7 @@ export default function ActionAreaCard({ valve_id, timestamp, arr_data }) {
     return (
         <Card sx={{ maxWidth: 345 }} style={{ backgroundColor: '#A2C6D8' }}>
             <CardActionArea>
-                <GraphTest height="230" data={arr_data} />
+                <GraphTest height={230} data={arr_data} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {valve_id}
