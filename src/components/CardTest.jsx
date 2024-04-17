@@ -1,15 +1,16 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import * as React from 'react'
+import { CardActionArea, Typography, CardContent, Card } from '@mui/material'
 import GraphTest from './GraphTest'
+import { getLastOpeningIndex } from '../services/utilities'
 
-export default function ActionAreaCard({ valve_id, timestamp, arr_data }) {
+export default function CardTest({ valve_id, timestamp, arr_data }) {
+    const lastOpenIndex = getLastOpeningIndex(arr_data)
+
     return (
-        <Card sx={{ maxWidth: 345 }} style={{ backgroundColor: '#A2C6D8' }}>
+        <Card sx={{ width: 330 }} style={{ backgroundColor: '#A2C6D8' }}>
             <CardActionArea>
-                <GraphTest height={230} data={arr_data} />
+                <GraphTest height={175} data={arr_data.slice(0, lastOpenIndex)} />
+                <GraphTest height={175} data={arr_data.slice(lastOpenIndex, arr_data.length)} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {valve_id}
