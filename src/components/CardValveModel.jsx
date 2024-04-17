@@ -1,18 +1,14 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import * as React from 'react'
+import { CardActionArea, Typography, CardMedia, CardContent, Card } from '@mui/material'
 
-export default function ActionAreaCard({ code, description }) {
+export default function CardValveModel({ code, description, img_url }) {
     return (
-        <Card sx={{ maxWidth: 345 }} style={{ backgroundColor: '#A2C6D8'}}>
+        <Card sx={{ maxWidth: 345 }} style={{ backgroundColor: '#A2C6D8' }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
                     height="180"
-                    image="/noimage.jpg" //TODO: importare la vera immagine
+                    image={img_url}
                     alt={code}
                 />
                 <CardContent>
