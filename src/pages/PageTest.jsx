@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import GraphTest from '../components/GraphTest'
 import TableTest from '../components/TableTest'
+import {getLastOpeningIndex} from '../services/utilities'
 
 export default function PageTest({ data }) {
     const defaultChoice = "Opening"
@@ -9,30 +10,16 @@ export default function PageTest({ data }) {
     const [windowSize, setWindowSize] = useState(document.documentElement.clientHeight)
     const [selectedData, setSelectedData] = useState(defaultChoice)
 
-    function getLastOpeningIndex() {
-        let i = 0
-        let lastAngle = -1
-
-        for (i = 0; i < data.length; i++) {
-            if (data[i].angle <= lastAngle) {
-                break
-            }
-
-            lastAngle = data[i].angle
-        }
-
-        return i
-    }
-
     function getEffectiveData(type) {
         let final_data
+        let lastOpenIndex = getLastOpeningIndex(data)
 
         switch (type) {
             case "Opening":
-                final_data = data.slice(0, getLastOpeningIndex())
+                final_data = data.slice(0, lastOpenIndex)
                 break
             case "Closing":
-                final_data = data.slice(getLastOpeningIndex(), data.length)
+                final_data = data.slice(lastOpenIndex, data.length)
                 break
             case "All":
                 final_data = data
