@@ -3,7 +3,7 @@ import { CardActionArea, Typography, CardContent, Card } from '@mui/material'
 import GraphTest from './GraphTest'
 import { getLastOpeningIndex } from '../services/utilities'
 
-export default function CardTest({ valve_id, timestamp, arr_data }) {
+export default function CardTest({ instance_id, timestamp, arr_data }) {
     const lastOpenIndex = getLastOpeningIndex(arr_data)
 
     return (
@@ -13,7 +13,7 @@ export default function CardTest({ valve_id, timestamp, arr_data }) {
                 <GraphTest height={175} data={arr_data.slice(lastOpenIndex, arr_data.length)} />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {valve_id}
+                        {instance_id}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         Done on: {new Date(timestamp).toLocaleString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}

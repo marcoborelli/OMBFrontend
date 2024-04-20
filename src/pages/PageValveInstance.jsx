@@ -68,7 +68,7 @@ export default function PageVlaveInstance() {
                     {instance.tests.map((test) => (
                         <Grid item key={test._id}>
                             <Link to={`/tests/${test._id}`} style={{ textDecoration: 'none' }}>
-                                <CardTest valve_id={test._id} timestamp={test.timestamp} arr_data={test.data} />
+                                <CardTest instance_id="" timestamp={test.timestamp} arr_data={test.data} />
                             </Link>
                         </Grid>
                     ))}

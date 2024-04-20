@@ -34,7 +34,7 @@ export default function PageGenericTest() {
                 {tests.map((d) => (
                     <Grid item key={d._id}>
                         <Link to={`/tests/${d._id}`} style={{ textDecoration: 'none' }}>
-                            <CardTest valve_id={d.valve_id} timestamp={d.timestamp} arr_data={d.data} />
+                            <CardTest instance_id={d.instance_id} timestamp={d.timestamp} arr_data={d.data} />
                         </Link>
                     </Grid>
                 ))}
