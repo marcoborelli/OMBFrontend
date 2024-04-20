@@ -16,7 +16,7 @@ export default function CardTest({ valve_id, timestamp, arr_data }) {
                         {valve_id}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Done on: {timestamp.toLocaleString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        Done on: {new Date(timestamp).toLocaleString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </Typography>
                 </CardContent>
             </CardActionArea>
