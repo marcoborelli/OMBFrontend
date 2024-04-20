@@ -21,5 +21,5 @@ export default function CardTest({ valve_id, timestamp, arr_data }) {
                 </CardContent>
             </CardActionArea>
         </Card>
-    );
+    )
 }

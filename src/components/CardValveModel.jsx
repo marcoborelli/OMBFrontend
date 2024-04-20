@@ -21,5 +21,5 @@ export default function CardValveModel({ code, description, img_url }) {
                 </CardContent>
             </CardActionArea>
         </Card>
-    );
+    )
 }

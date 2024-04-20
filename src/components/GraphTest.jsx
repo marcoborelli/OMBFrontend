@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
+import * as React from 'react'
+import { LineChart } from '@mui/x-charts/LineChart'
 
 export default function GraphTest({ height, data }) {
     return (
@@ -12,5 +12,5 @@ export default function GraphTest({ height, data }) {
             }]} //angle
             height={height}
         />
-    );
+    )
 }

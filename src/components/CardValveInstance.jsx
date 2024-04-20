@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import { CardActionArea, Typography, CardContent, Card } from '@mui/material'
 
 export default function CardValveInstance({ serial_number, job_number }) {
@@ -15,5 +15,5 @@ export default function CardValveInstance({ serial_number, job_number }) {
                 </CardContent>
             </CardActionArea>
         </Card>
-    );
+    )
 }
