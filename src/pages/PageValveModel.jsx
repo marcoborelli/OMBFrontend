@@ -1,8 +1,52 @@
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardMedia, TextField, Grid } from '@mui/material';
+import { useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { Card, CardContent, CardMedia, TextField, Grid } from '@mui/material'
 import CardValveInstance from '../components/CardValveInstance'
+import Loading from '../components/Loading'
+import api from '../services/api'
 
-export default function PageTest({ code, description, gear_model, ma_gear, img_url, instances }) {
+export default function PageValveModel() {
+    const { modelID } = useParams()
+    const [valve, setValve] = useState()
+    const [instances, setInstances] = useState([])
+
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(`api/valves/get/${modelID}`)
+                setValve(response.data)
+            } catch (error) {
+                console.error('Error fetching user data:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchData()
+    }, [])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(`api/instances/all/${modelID}`)
+                setInstances(response.data)
+            } catch (error) {
+                console.error('Error fetching user data:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchData()
+    }, [])
+
+
+    if (loading) {
+        return <Loading text="Caricamento in corso..."></Loading>
+    }
+
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} sm={3} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
@@ -10,14 +54,14 @@ export default function PageTest({ code, description, gear_model, ma_gear, img_u
                     <CardMedia
                         component="img"
                         height="200"
-                        image={img_url}
-                        alt={code}
+                        image={valve.img_url}
+                        alt={valve._id}
                     />
 
                     <CardContent>
                         <TextField
                             label="Code"
-                            value={code}
+                            value={valve._id}
                             InputProps={{ readOnly: true }}
                             fullWidth
                         />
@@ -27,7 +71,7 @@ export default function PageTest({ code, description, gear_model, ma_gear, img_u
 
                         <TextField
                             label="Description"
-                            value={description}
+                            value={valve.description}
                             InputProps={{ readOnly: true }}
                             multiline
                             fullWidth
@@ -38,7 +82,7 @@ export default function PageTest({ code, description, gear_model, ma_gear, img_u
 
                         <TextField
                             label="Gear Model"
-                            value={gear_model}
+                            value={valve.gear_model}
                             InputProps={{ readOnly: true }}
                             fullWidth
                         />
@@ -48,7 +92,7 @@ export default function PageTest({ code, description, gear_model, ma_gear, img_u
 
                         <TextField
                             label="M.A. Gear"
-                            value={ma_gear}
+                            value={valve.ma_gear}
                             type="number"
                             InputProps={{ readOnly: true }}
                             fullWidth
@@ -59,12 +103,14 @@ export default function PageTest({ code, description, gear_model, ma_gear, img_u
             <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
                 <Grid container spacing={2} justifyContent="center">
                     {instances.map((instance) => (
-                        <Grid item>
-                            <CardValveInstance serial_number={instance._id} job_number={instance.job_number} key={`${instance._id}`} />
+                        <Grid item key={instance._id}>
+                            <Link to={`/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
+                                <CardValveInstance serial_number={instance._id} job_number={instance.job_number} key={`${instance._id}`} />
+                            </Link>
                         </Grid>
                     ))}
                 </Grid>
             </Grid>
         </Grid >
-    );
-};
+    )
+}
