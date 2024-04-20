@@ -1,8 +1,34 @@
-import { useState, useEffect } from 'react';
-import { Card, CardContent, TextField, Grid } from '@mui/material';
+import { useState, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { Card, CardContent, TextField, Grid } from '@mui/material'
 import CardTest from '../components/CardTest'
+import Loading from '../components/Loading'
+import api from '../services/api'
 
-export default function PageTest({ serial_number, job_number, valve_model, tests }) {
+export default function PageVlaveInstance() {
+    const { instanceID } = useParams()
+    const [instance, setInstance] = useState()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(`api/instances/get/${instanceID}`)
+                setInstance(response.data)
+            } catch (error) {
+                console.error('Error fetching user data:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchData()
+    }, [])
+
+    if (loading) {
+        return <Loading text="Caricamento in corso..."></Loading>
+    }
+
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} sm={3} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
@@ -10,7 +36,7 @@ export default function PageTest({ serial_number, job_number, valve_model, tests
                     <CardContent>
                         <TextField
                             label="Serial number"
-                            value={serial_number}
+                            value={instance._id}
                             InputProps={{ readOnly: true }}
                             fullWidth
                         />
@@ -20,7 +46,7 @@ export default function PageTest({ serial_number, job_number, valve_model, tests
 
                         <TextField
                             label="Job Number"
-                            value={job_number}
+                            value={instance.job_number}
                             InputProps={{ readOnly: true }}
                             fullWidth
                         />
@@ -30,7 +56,7 @@ export default function PageTest({ serial_number, job_number, valve_model, tests
 
                         <TextField //TODO: inserire collegamento a valvola con quell'id
                             label="Valve Model"
-                            value={valve_model}
+                            value={instance.valve_model._id}
                             InputProps={{ readOnly: true }}
                             fullWidth
                         />
@@ -39,13 +65,15 @@ export default function PageTest({ serial_number, job_number, valve_model, tests
             </Grid>
             <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
                 <Grid container spacing={2} justifyContent="center">
-                    {tests.map((test) => (
-                        <Grid item>
-                            <CardTest valve_id={test._id} timestamp={test.timestamp} arr_data={test.data} key={`${test._id}`} />
+                    {instance.tests.map((test) => (
+                        <Grid item key={test._id}>
+                            <Link to={`/tests/${test._id}`} style={{ textDecoration: 'none' }}>
+                                <CardTest valve_id={test._id} timestamp={test.timestamp} arr_data={test.data} />
+                            </Link>
                         </Grid>
                     ))}
                 </Grid>
             </Grid>
         </Grid >
-    );
-};
+    )
+}
