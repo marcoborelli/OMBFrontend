@@ -1,28 +1,51 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material'
 import GraphTest from '../components/GraphTest'
 import TableTest from '../components/TableTest'
-import {getLastOpeningIndex} from '../services/utilities'
+import Loading from '../components/Loading'
+import { getLastOpeningIndex } from '../services/utilities'
+import api from '../services/api'
 
-export default function PageTest({ data }) {
+
+export default function PageTest() {
+    const { testID } = useParams()
+    const [test, setTest] = useState()
+    const [loading, setLoading] = useState(true)
+
     const defaultChoice = "Opening"
 
     const [windowSize, setWindowSize] = useState(document.documentElement.clientHeight)
     const [selectedData, setSelectedData] = useState(defaultChoice)
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get(`api/tests/get/${testID}`)
+                setTest(response.data)
+            } catch (error) {
+                console.error('Error fetching user data:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchData()
+    }, [])
+
     function getEffectiveData(type) {
         let final_data
-        let lastOpenIndex = getLastOpeningIndex(data)
+        let lastOpenIndex = getLastOpeningIndex(test.data)
 
         switch (type) {
             case "Opening":
-                final_data = data.slice(0, lastOpenIndex)
+                final_data = test.data.slice(0, lastOpenIndex)
                 break
             case "Closing":
-                final_data = data.slice(lastOpenIndex, data.length)
+                final_data = test.data.slice(lastOpenIndex, test.data.length)
                 break
             case "All":
-                final_data = data
+                final_data = test.data
                 break
         }
 
@@ -41,6 +64,9 @@ export default function PageTest({ data }) {
     }, [])
 
 
+    if (loading) {
+        return <Loading text="Caricamento in corso..."></Loading>
+    }
 
     return (
         <Grid container spacing={2}>
