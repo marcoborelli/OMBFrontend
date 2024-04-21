@@ -71,7 +71,7 @@ export default function PageVlaveInstance() {
                     </CardContent>
                 </Card>
             </Grid>
-            <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+            <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
                 <Grid container spacing={2} justifyContent="center">
                     {instance.tests.map((test) => (
                         <Grid item key={test._id}>

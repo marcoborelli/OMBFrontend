@@ -29,7 +29,7 @@ export default function PageGenericTest() {
     }
 
     return (
-        <Grid item style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+        <Grid item style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
             <Grid container spacing={2} justifyContent="center">
                 {tests.map((d) => (
                     <Grid item key={d._id}>

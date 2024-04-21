@@ -108,7 +108,7 @@ export default function PageValveModel() {
                     </CardContent>
                 </Card>
             </Grid>
-            <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
+            <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
                 <Grid container spacing={2} justifyContent="center">
                     {instances.map((instance) => (
                         <Grid item key={instance._id}>
