@@ -40,10 +40,10 @@ export default function PageVlaveInstance() {
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={3} style={{ maxHeight: '93vh', overflowY: 'auto' }}>
-                    <Card>
+                    <Card elevation={0}>
                         <CardContent>
                             <TextField
                                 label="Serial number"
