@@ -4,11 +4,14 @@ import { Card, CardContent, TextField, Grid } from '@mui/material'
 import CardTest from '../components/CardTest'
 import Loading from '../components/Loading'
 import api from '../services/api'
+import { getErrorPage } from '../services/utilities'
 
 export default function PageVlaveInstance() {
     const { instanceID } = useParams()
     const [instance, setInstance] = useState()
     const [loading, setLoading] = useState(true)
+
+    const [error, setError] = useState(-1)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,6 +19,7 @@ export default function PageVlaveInstance() {
                 const response = await api.get(`api/instances/get/${instanceID}`)
                 setInstance(response.data)
             } catch (error) {
+                setError(error.response.status)
                 console.error('Error fetching user data:', error)
             } finally {
                 setLoading(false)
@@ -24,6 +28,10 @@ export default function PageVlaveInstance() {
 
         fetchData()
     }, [])
+
+    if (error != -1) {
+        return getErrorPage(error)
+    }
 
     if (loading) {
         return <Loading text="Caricamento in corso..."></Loading>

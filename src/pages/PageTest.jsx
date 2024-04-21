@@ -4,7 +4,7 @@ import { Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } fro
 import GraphTest from '../components/GraphTest'
 import TableTest from '../components/TableTest'
 import Loading from '../components/Loading'
-import { getLastOpeningIndex } from '../services/utilities'
+import { getLastOpeningIndex, getErrorPage } from '../services/utilities'
 import api from '../services/api'
 
 
@@ -12,6 +12,8 @@ export default function PageTest() {
     const { testID } = useParams()
     const [test, setTest] = useState()
     const [loading, setLoading] = useState(true)
+
+    const [error, setError] = useState(-1)
 
     const defaultChoice = "Opening"
 
@@ -24,6 +26,7 @@ export default function PageTest() {
                 const response = await api.get(`api/tests/get/${testID}`)
                 setTest(response.data)
             } catch (error) {
+                setError(error.response.status)
                 console.error('Error fetching user data:', error)
             } finally {
                 setLoading(false)
@@ -63,6 +66,9 @@ export default function PageTest() {
         }
     }, [])
 
+    if (error != -1) {
+        return getErrorPage(error)
+    }
 
     if (loading) {
         return <Loading text="Caricamento in corso..."></Loading>

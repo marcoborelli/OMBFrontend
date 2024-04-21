@@ -4,11 +4,14 @@ import { Card, CardContent, CardMedia, TextField, Grid } from '@mui/material'
 import CardValveInstance from '../components/CardValveInstance'
 import Loading from '../components/Loading'
 import api from '../services/api'
+import { getErrorPage } from '../services/utilities'
 
 export default function PageValveModel() {
     const { modelID } = useParams()
     const [valve, setValve] = useState()
     const [instances, setInstances] = useState([])
+
+    const [error, setError] = useState(-1)
 
     const [loadingValves, setLoadingValves] = useState(true)
     const [loadingInstances, setLoadingInstances] = useState(true)
@@ -19,6 +22,7 @@ export default function PageValveModel() {
                 const response = await api.get(`api/valves/get/${modelID}`)
                 setValve(response.data)
             } catch (error) {
+                setError(error.response.status)
                 console.error('Error fetching user data:', error)
             } finally {
                 setLoadingValves(false)
@@ -43,6 +47,9 @@ export default function PageValveModel() {
         fetchData()
     }, [])
 
+    if (error != -1) {
+        return getErrorPage(error)
+    }
 
     if (loadingValves || loadingInstances) {
         return <Loading text="Caricamento in corso..."></Loading>
