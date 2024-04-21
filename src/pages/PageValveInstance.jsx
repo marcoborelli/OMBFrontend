@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Card, CardContent, TextField, Grid } from '@mui/material'
 import CardTest from '../components/CardTest'
 import Loading from '../components/Loading'
+import Navbar from '../components/Navbar'
 import api from '../services/api'
 import { getErrorPage } from '../services/utilities'
 
@@ -38,50 +39,53 @@ export default function PageVlaveInstance() {
     }
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={12} sm={3} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-                <Card>
-                    <CardContent>
-                        <TextField
-                            label="Serial number"
-                            value={instance._id}
-                            InputProps={{ readOnly: true }}
-                            fullWidth
-                        />
+        <>
+        <Navbar/>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={3} style={{ maxHeight: '93vh', overflowY: 'auto' }}>
+                    <Card>
+                        <CardContent>
+                            <TextField
+                                label="Serial number"
+                                value={instance._id}
+                                InputProps={{ readOnly: true }}
+                                fullWidth
+                            />
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <TextField
-                            label="Job Number"
-                            value={instance.job_number}
-                            InputProps={{ readOnly: true }}
-                            fullWidth
-                        />
+                            <TextField
+                                label="Job Number"
+                                value={instance.job_number}
+                                InputProps={{ readOnly: true }}
+                                fullWidth
+                            />
 
-                        <br />
-                        <br />
+                            <br />
+                            <br />
 
-                        <TextField //TODO: inserire collegamento a valvola con quell'id
-                            label="Valve Model"
-                            value={instance.valve_model._id}
-                            InputProps={{ readOnly: true }}
-                            fullWidth
-                        />
-                    </CardContent>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
-                <Grid container spacing={2} justifyContent="center">
-                    {instance.tests.map((test) => (
-                        <Grid item key={test._id}>
-                            <Link to={`/tests/${test._id}`} style={{ textDecoration: 'none' }}>
-                                <CardTest instance_id="" timestamp={test.timestamp} arr_data={test.data} />
-                            </Link>
-                        </Grid>
-                    ))}
+                            <TextField //TODO: inserire collegamento a valvola con quell'id
+                                label="Valve Model"
+                                value={instance.valve_model._id}
+                                InputProps={{ readOnly: true }}
+                                fullWidth
+                            />
+                        </CardContent>
+                    </Card>
                 </Grid>
-            </Grid>
-        </Grid >
+                <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
+                    <Grid container spacing={2} justifyContent="center">
+                        {instance.tests.map((test) => (
+                            <Grid item key={test._id}>
+                                <Link to={`/tests/${test._id}`} style={{ textDecoration: 'none' }}>
+                                    <CardTest instance_id="" timestamp={test.timestamp} arr_data={test.data} />
+                                </Link>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Grid>
+            </Grid >
+        </>
     )
 }
