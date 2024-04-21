@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Grid } from '@mui/material'
 import CardValveModel from '../components/CardValveModel'
 import Loading from '../components/Loading'
+import Navbar from '../components/Navbar'
 import api from '../services/api'
 
 export default function PageGenericValveModel() {
@@ -29,16 +30,19 @@ export default function PageGenericValveModel() {
     }
 
     return (
-        <Grid item style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
-            <Grid container spacing={2} justifyContent="center">
-                {valves.map((valve) => (
-                    <Grid item key={valve._id}>
-                        <Link to={`/models/${valve._id}`} style={{ textDecoration: 'none' }}>
-                            <CardValveModel code={valve._id} description={valve.description} img_url={valve.img_url} />
-                        </Link>
-                    </Grid>
-                ))}
+        <>
+            <Navbar />
+            <Grid item style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
+                <Grid container spacing={2} justifyContent="center">
+                    {valves.map((valve) => (
+                        <Grid item key={valve._id}>
+                            <Link to={`/models/${valve._id}`} style={{ textDecoration: 'none' }}>
+                                <CardValveModel code={valve._id} description={valve.description} img_url={valve.img_url} />
+                            </Link>
+                        </Grid>
+                    ))}
+                </Grid>
             </Grid>
-        </Grid>
+        </>
     )
 }
