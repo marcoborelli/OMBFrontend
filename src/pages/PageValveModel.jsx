@@ -10,7 +10,8 @@ export default function PageValveModel() {
     const [valve, setValve] = useState()
     const [instances, setInstances] = useState([])
 
-    const [loading, setLoading] = useState(true)
+    const [loadingValves, setLoadingValves] = useState(true)
+    const [loadingInstances, setLoadingInstances] = useState(true)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,7 +21,7 @@ export default function PageValveModel() {
             } catch (error) {
                 console.error('Error fetching user data:', error)
             } finally {
-                setLoading(false)
+                setLoadingValves(false)
             }
         }
 
@@ -35,7 +36,7 @@ export default function PageValveModel() {
             } catch (error) {
                 console.error('Error fetching user data:', error)
             } finally {
-                setLoading(false)
+                setLoadingInstances(false)
             }
         }
 
@@ -43,7 +44,7 @@ export default function PageValveModel() {
     }, [])
 
 
-    if (loading) {
+    if (loadingValves || loadingInstances) {
         return <Loading text="Caricamento in corso..."></Loading>
     }
 
