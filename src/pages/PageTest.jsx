@@ -4,6 +4,7 @@ import { Grid, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } fro
 import GraphTest from '../components/GraphTest'
 import TableTest from '../components/TableTest'
 import Loading from '../components/Loading'
+import Navbar from '../components/Navbar'
 import { getLastOpeningIndex, getErrorPage } from '../services/utilities'
 import api from '../services/api'
 
@@ -75,29 +76,32 @@ export default function PageTest() {
     }
 
     return (
-        <Grid container spacing={2}>
-            <Grid item xs={12} sm={3} style={{ height: '100vh', overflowY: 'auto' }}>
-                <FormControl>
-                    <FormLabel id="demo-row-radio-buttons-group-label">View only:</FormLabel>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                        defaultValue={(defaultChoice)}
-                        onChange={(e) => setSelectedData(e.target.value)}
-                    >
-                        <FormControlLabel value="Opening" control={<Radio />} label="Opening" />
-                        <FormControlLabel value="Closing" control={<Radio />} label="Closing" />
-                        <FormControlLabel value="All" control={<Radio />} label="All" />
-                    </RadioGroup>
-                </FormControl>
+        <>
+            <Navbar />
+            <Grid container>
+                <Grid item xs={12} sm={3} style={{ height: '93vh', overflowY: 'auto' }}>
+                    <FormControl>
+                        <FormLabel id="demo-row-radio-buttons-group-label">View only:</FormLabel>
+                        <RadioGroup
+                            row
+                            aria-labelledby="demo-row-radio-buttons-group-label"
+                            name="row-radio-buttons-group"
+                            defaultValue={(defaultChoice)}
+                            onChange={(e) => setSelectedData(e.target.value)}
+                        >
+                            <FormControlLabel value="Opening" control={<Radio />} label="Opening" />
+                            <FormControlLabel value="Closing" control={<Radio />} label="Closing" />
+                            <FormControlLabel value="All" control={<Radio />} label="All" />
+                        </RadioGroup>
+                    </FormControl>
 
-                <TableTest rows={getEffectiveData(selectedData)}></TableTest>
-            </Grid>
-            <Grid item xs={12} sm={9} style={{ backgroundColor: '#FFECCB' }}>
-                {(selectedData == "All" || selectedData == "Opening") && <GraphTest height={windowSize * 0.50} data={getEffectiveData("Opening")} />}
-                {(selectedData == "All" || selectedData == "Closing") && <GraphTest height={windowSize * 0.50} data={getEffectiveData("Closing")} />}
-            </Grid>
-        </Grid >
+                    <TableTest rows={getEffectiveData(selectedData)}></TableTest>
+                </Grid>
+                <Grid item xs={12} sm={9} style={{ backgroundColor: '#FFECCB' }}>
+                    {(selectedData == "All" || selectedData == "Opening") && <GraphTest height={windowSize * 0.46} data={getEffectiveData("Opening")} />}
+                    {(selectedData == "All" || selectedData == "Closing") && <GraphTest height={windowSize * 0.46} data={getEffectiveData("Closing")} />}
+                </Grid>
+            </Grid >
+        </>
     )
 }
