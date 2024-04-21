@@ -7,6 +7,7 @@ import PageGenericTest from './pages/PageGenericTest'
 import PageValveModel from './pages/PageValveModel'
 import PageValveInstance from './pages/PageValveInstance'
 import PageTest from './pages/PageTest'
+import PageError404 from './pages/PageError404'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/tests/:testID',
     element: <PageTest />
+  },
+  {
+    path: '*',
+    element: <PageError404 />
   }
 ])
 
