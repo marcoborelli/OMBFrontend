@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Card, CardContent, CardMedia, TextField, Grid } from '@mui/material'
 import CardValveInstance from '../components/CardValveInstance'
 import Loading from '../components/Loading'
+import Navbar from '../components/Navbar'
 import api from '../services/api'
 import { getErrorPage } from '../services/utilities'
 
@@ -56,69 +57,72 @@ export default function PageValveModel() {
     }
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={12} sm={3} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-                <Card>
-                    <CardMedia
-                        component="img"
-                        height="200"
-                        image={valve.img_url}
-                        alt={valve._id}
-                    />
-
-                    <CardContent>
-                        <TextField
-                            label="Code"
-                            value={valve._id}
-                            InputProps={{ readOnly: true }}
-                            fullWidth
+        <>
+        <Navbar/>
+            <Grid container spacing={3}>
+                <Grid item xs={12} sm={3} style={{ maxHeight: '93vh', overflowY: 'auto' }}>
+                    <Card>
+                        <CardMedia
+                            component="img"
+                            height="200"
+                            image={valve.img_url}
+                            alt={valve._id}
                         />
 
-                        <br />
-                        <br />
+                        <CardContent>
+                            <TextField
+                                label="Code"
+                                value={valve._id}
+                                InputProps={{ readOnly: true }}
+                                fullWidth
+                            />
 
-                        <TextField
-                            label="Description"
-                            value={valve.description}
-                            InputProps={{ readOnly: true }}
-                            multiline
-                            fullWidth
-                        />
+                            <br />
+                            <br />
 
-                        <br />
-                        <br />
+                            <TextField
+                                label="Description"
+                                value={valve.description}
+                                InputProps={{ readOnly: true }}
+                                multiline
+                                fullWidth
+                            />
 
-                        <TextField
-                            label="Gear Model"
-                            value={valve.gear_model}
-                            InputProps={{ readOnly: true }}
-                            fullWidth
-                        />
+                            <br />
+                            <br />
 
-                        <br />
-                        <br />
+                            <TextField
+                                label="Gear Model"
+                                value={valve.gear_model}
+                                InputProps={{ readOnly: true }}
+                                fullWidth
+                            />
 
-                        <TextField
-                            label="M.A. Gear"
-                            value={valve.ma_gear}
-                            type="number"
-                            InputProps={{ readOnly: true }}
-                            fullWidth
-                        />
-                    </CardContent>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
-                <Grid container spacing={2} justifyContent="center">
-                    {instances.map((instance) => (
-                        <Grid item key={instance._id}>
-                            <Link to={`/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
-                                <CardValveInstance serial_number={instance._id} job_number={instance.job_number} key={`${instance._id}`} />
-                            </Link>
-                        </Grid>
-                    ))}
+                            <br />
+                            <br />
+
+                            <TextField
+                                label="M.A. Gear"
+                                value={valve.ma_gear}
+                                type="number"
+                                InputProps={{ readOnly: true }}
+                                fullWidth
+                            />
+                        </CardContent>
+                    </Card>
                 </Grid>
-            </Grid>
-        </Grid >
+                <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
+                    <Grid container spacing={2} justifyContent="center">
+                        {instances.map((instance) => (
+                            <Grid item key={instance._id}>
+                                <Link to={`/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
+                                    <CardValveInstance serial_number={instance._id} job_number={instance.job_number} key={`${instance._id}`} />
+                                </Link>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Grid>
+            </Grid >
+        </>
     )
 }
