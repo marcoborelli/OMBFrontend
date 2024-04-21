@@ -1,15 +1,28 @@
 import * as React from 'react'
 import { LineChart } from '@mui/x-charts/LineChart'
 
-export default function GraphTest({ height, data }) {
+export default function GraphTest({ height, data, isInCard, isClosing }) {
+    let axisData = data.map(val => val.angle)
+    let pairData = data.map(val => val.pair)
+
     return (
         <LineChart
-            xAxis={[{ data: data.map(val => val.angle) }]} //pair
+            xAxis={[{
+                data: axisData,
+                reverse: isClosing,
+                label: isInCard ? " " : "Angle (°)",
+            }]} //pair
+
             series={[{
-                data: data.map(val => val.pair),
+                data: pairData,
                 area: true,
-                showMark: false
+                showMark: false,
             }]} //angle
+
+            yAxis={[{
+                label: isInCard ? " " : "Pair (N/m)"
+            }]}
+
             height={height}
         />
     )
