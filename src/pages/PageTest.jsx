@@ -99,7 +99,7 @@ export default function PageTest() {
                 </Grid>
                 <Grid item xs={12} sm={9} style={{ backgroundColor: '#FFECCB' }}>
                     {(selectedData == "All" || selectedData == "Opening") && <GraphTest height={windowSize * 0.46} data={getEffectiveData("Opening")} />}
-                    {(selectedData == "All" || selectedData == "Closing") && <GraphTest height={windowSize * 0.46} data={getEffectiveData("Closing")} />}
+                    {(selectedData == "All" || selectedData == "Closing") && <GraphTest height={windowSize * 0.46} data={getEffectiveData("Closing")} isClosing/>}
                 </Grid>
             </Grid >
         </>

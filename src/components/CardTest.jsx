@@ -9,8 +9,8 @@ export default function CardTest({ instance_id, timestamp, arr_data }) {
     return (
         <Card sx={{ width: 330 }} style={{ backgroundColor: '#A2C6D8' }}>
             <CardActionArea>
-                <GraphTest height={175} data={arr_data.slice(0, lastOpenIndex)} />
-                <GraphTest height={175} data={arr_data.slice(lastOpenIndex, arr_data.length)} />
+                <GraphTest height={175} data={arr_data.slice(0, lastOpenIndex)} isInCard />
+                <GraphTest height={175} data={arr_data.slice(lastOpenIndex, arr_data.length)} isInCard isClosing/>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {instance_id}
