@@ -32,7 +32,7 @@ export default function PageGenericValveModel() {
     return (
         <>
             <Navbar />
-            <Grid item style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
+            <Grid item style={{ paddingTop: '3vh' }}>
                 <Grid container spacing={2} justifyContent="center">
                     {valves.map((valve) => (
                         <Grid item key={valve._id}>
