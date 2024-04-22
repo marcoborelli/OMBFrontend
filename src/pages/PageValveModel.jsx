@@ -4,6 +4,7 @@ import { Card, CardContent, CardMedia, TextField, Grid } from '@mui/material'
 import CardValveInstance from '../components/CardValveInstance'
 import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
+import Searchbar from '../components/Searchbar'
 import api from '../services/api'
 import { getErrorPage } from '../services/utilities'
 
@@ -11,6 +12,7 @@ export default function PageValveModel() {
     const { modelID } = useParams()
     const [valve, setValve] = useState()
     const [instances, setInstances] = useState([])
+    const [filteredInstances, setFilteredInstances] = useState([])
 
     const [error, setError] = useState(-1)
 
@@ -38,6 +40,7 @@ export default function PageValveModel() {
             try {
                 const response = await api.get(`api/instances/all/${modelID}`)
                 setInstances(response.data)
+                setFilteredInstances(response.data)
             } catch (error) {
                 console.error('Error fetching user data:', error)
             } finally {
@@ -47,6 +50,12 @@ export default function PageValveModel() {
 
         fetchData()
     }, [])
+
+    function filterInstances(e) {
+        setFilteredInstances(instances.filter((instance) => {
+            return instance._id.toLowerCase().trim().includes(e.target.value.toLowerCase().trim())
+        }))
+    }
 
     if (error != -1) {
         return getErrorPage(error)
@@ -58,7 +67,7 @@ export default function PageValveModel() {
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={3} style={{ maxHeight: '93vh', overflowY: 'auto' }}>
                     <Card elevation={0}>
@@ -111,9 +120,12 @@ export default function PageValveModel() {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
-                    <Grid container spacing={2} justifyContent="center">
-                        {instances.map((instance) => (
+                <Grid item xs={12} sm={9} style={{paddingTop: '3vh' }}>
+                    <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
+                        <Searchbar api_endpoint='api/instances/all' bar_width='75%' default_text='Find a valve model instance' onChange_func={filterInstances} />
+                    </Grid>
+                    <Grid container spacing={2} justifyContent="center" style={{  maxHeight: '70vh', overflowY: 'auto',paddingTop: '3vh', }}>
+                        {filteredInstances.map((instance) => (
                             <Grid item key={instance._id}>
                                 <Link to={`/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
                                     <CardValveInstance serial_number={instance._id} job_number={instance.job_number} key={`${instance._id}`} />
