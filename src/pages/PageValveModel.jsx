@@ -73,7 +73,7 @@ export default function PageValveModel() {
                     <Card elevation={0}>
                         <CardMedia
                             component="img"
-                            height="200"
+                            height="375"
                             image={valve.img_url}
                             alt={valve._id}
                         />
