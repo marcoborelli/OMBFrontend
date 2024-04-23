@@ -7,9 +7,14 @@ export default function CardValveModel({ code, description, img_url }) {
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    height="180"
                     image={img_url}
                     alt={code}
+                    height={180}
+                    sx={{
+                        maxWidth: '100%',
+                        height: '180px',
+                        objectFit: 'none'
+                    }}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" align="center" component="div">
