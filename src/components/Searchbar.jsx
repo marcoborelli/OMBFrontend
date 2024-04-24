@@ -32,6 +32,7 @@ export default function Searchbar({ api_endpoint, bar_width, default_text, onCha
                 renderInput={(params) => (
                     <TextField {...params}
                         onChange={onChange_func}
+                        onSelect={onChange_func}
                         variant="outlined"
                         label={default_text}
                     />
