@@ -41,8 +41,8 @@ export default function PageVlaveInstance() {
     return (
         <>
             <Navbar />
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={3} style={{ maxHeight: '93vh', overflowY: 'auto' }}>
+            <Grid container>
+                <Grid item xs={12} sm={3} style={{ maxHeight: '75vh', overflowY: 'auto' }}>
                     <Card elevation={0}>
                         <CardContent>
                             <TextField
@@ -74,7 +74,7 @@ export default function PageVlaveInstance() {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={9} style={{ maxHeight: '100vh', overflowY: 'auto', paddingTop: '3vh' }}>
+                <Grid item xs={12} sm={9} style={{ maxHeight: '75vh', overflowY: 'auto', paddingTop: '3vh' }}>
                     <Grid container spacing={2} justifyContent="center">
                         {instance.tests.map((test) => (
                             <Grid item key={test._id}>

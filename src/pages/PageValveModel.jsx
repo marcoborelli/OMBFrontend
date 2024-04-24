@@ -68,8 +68,8 @@ export default function PageValveModel() {
     return (
         <>
             <Navbar />
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={3} style={{ maxHeight: '93vh', overflowY: 'auto' }}>
+            <Grid container>
+                <Grid item xs={12} sm={3} style={{ maxHeight: '75vh', overflowY: 'auto' }}>
                     <Card elevation={0}>
                         <CardMedia
                             component="img"
