@@ -9,7 +9,6 @@ export default function CardValveModel({ code, description, img_url }) {
                     component="img"
                     image={img_url}
                     alt={code}
-                    height={180}
                     sx={{
                         maxWidth: '100%',
                         height: '180px',
