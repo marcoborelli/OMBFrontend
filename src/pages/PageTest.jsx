@@ -5,7 +5,7 @@ import GraphTest from '../components/GraphTest'
 import TableTest from '../components/TableTest'
 import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
-import { getLastOpeningIndex, getErrorPage } from '../services/utilities'
+import { getErrorPage } from '../services/utilities'
 import api from '../services/api'
 
 
@@ -39,14 +39,13 @@ export default function PageTest() {
 
     function getEffectiveData(type) {
         let final_data
-        let lastOpenIndex = getLastOpeningIndex(test.data)
 
         switch (type) {
             case "Opening":
-                final_data = test.data.slice(0, lastOpenIndex)
+                final_data = test.data.filter(d => d.isOpening)
                 break
             case "Closing":
-                final_data = test.data.slice(lastOpenIndex, test.data.length)
+                final_data = test.data.filter(d => !d.isOpening)
                 break
             case "All":
                 final_data = test.data
