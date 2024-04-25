@@ -38,7 +38,7 @@ export default function PageValveModel() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get(`api/instances/all/${modelID}`)
+                const response = await api.get(`api/instances/all/ofmodel/${modelID}`)
                 setInstances(response.data)
                 setFilteredInstances(response.data)
             } catch (error) {
