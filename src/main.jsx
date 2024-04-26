@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import PageGenericValveModel from './pages/PageGenericValveModel'
+import PageGenericValveFamilies from './pages/PageGenericValveFamily'
 import PageGenericTest from './pages/PageGenericTest'
 import PageValveModel from './pages/PageValveModel'
 import PageValveInstance from './pages/PageValveInstance'
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />
+  },
+  {
+    path: '/families',
+    element: <PageGenericValveFamilies />
   },
   {
     path: '/models',
