@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import AdbIcon from '@mui/icons-material/Adb'
 import { Link } from 'react-router-dom'
 
-const pages = ['models', 'tests']
+const pages = ['families', 'models', 'tests']
 const settings = ['Logout [N.A.]']
 
 function Navbar() {
