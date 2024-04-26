@@ -10,7 +10,7 @@ export default function TableMainAngles({ theoric_values, real_values, colors })
 
         if (real <= theoric) {
             res = "none"
-        } else if (real > theoric && real < 30 * 100 / theoric + theoric) {
+        } else if (real > theoric && real < 30 * theoric / 100 + theoric) {
             res = "orange" //se è maggiore del teroico ma minore del 30% in più
         } else {
             res = "red"
