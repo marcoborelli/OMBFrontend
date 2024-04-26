@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import PageGenericValveModel from './pages/PageGenericValveModel'
 import PageGenericValveFamilies from './pages/PageGenericValveFamily'
 import PageGenericTest from './pages/PageGenericTest'
+import PageValveFamily from './pages/PageValveFamily'
 import PageValveModel from './pages/PageValveModel'
 import PageValveInstance from './pages/PageValveInstance'
 import PageTest from './pages/PageTest'
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: '/tests',
     element: <PageGenericTest />
+  },
+  {
+    path: '/families/:familyID',
+    element: <PageValveFamily />
   },
   {
     path: '/models/:modelID',
