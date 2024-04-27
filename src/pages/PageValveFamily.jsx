@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Card, CardContent, CardMedia, TextField, Grid, Typography } from '@mui/material'
 import CardValveModel from '../components/CardValveModel'
 import TableMainAngles from '../components/TableMainAngles'
+import Legend from '../components/Legend'
 import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
@@ -90,10 +91,8 @@ export default function PageValveModel() {
                             <br />
                             <br />
 
-                            <Typography variant="body2" color="text.secondary">
-                                Valori teorici/Media dei valori reali
-                            </Typography>
-                            <TableMainAngles theoric_values={family.theoric_values} real_values={family.average_values} colWidth={"20px"} digits={1} />
+                            <TableMainAngles theoric_values={family.theoric_values} real_values={family.average_values} colWidth={"20px"} digits={1} showRowName />
+                            <Legend avatar_width={22} avatar_height={22} primary_size={14} secondary_size={12} />
                         </CardContent>
                     </Card>
                 </Grid>
