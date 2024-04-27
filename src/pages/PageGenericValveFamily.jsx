@@ -75,6 +75,8 @@ export default function PageGenericValveFamilies() {
                             <ListItemText primary="Warning" secondary="The average is higher than the theoric one (but less than 30%)" />
                         </ListItem>
                     </List>
+
+                    <Divider />
                 </Grid>
                 <Grid item xs={12} sm={9} style={{ maxHeight: '75vh', overflowY: 'auto', paddingTop: '3vh' }}>
                     <Grid container spacing={2} justifyContent="center">
