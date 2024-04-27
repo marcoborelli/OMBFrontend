@@ -117,14 +117,26 @@ export default function PageValveModel() {
                                 InputProps={{ readOnly: true }}
                                 fullWidth
                             />
+
+                            <br />
+                            <br />
+
+                            <Link to={`/families/${valve.valve_family._id}`}>
+                                <TextField
+                                    label="Valve Family"
+                                    value={valve.valve_family._id}
+                                    InputProps={{ readOnly: true }}
+                                    fullWidth
+                                />
+                            </Link>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={9} style={{paddingTop: '3vh' }}>
+                <Grid item xs={12} sm={9} style={{ paddingTop: '3vh' }}>
                     <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
                         <Searchbar api_endpoint='api/instances/all' bar_width='75%' default_text='Find a valve model instance' onChange_func={filterInstances} />
                     </Grid>
-                    <Grid container spacing={2} justifyContent="center" style={{  maxHeight: '70vh', overflowY: 'auto',paddingTop: '3vh', }}>
+                    <Grid container spacing={2} justifyContent="center" style={{ maxHeight: '70vh', overflowY: 'auto', paddingTop: '3vh', }}>
                         {filteredInstances.map((instance) => (
                             <Grid item key={instance._id}>
                                 <Link to={`/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
