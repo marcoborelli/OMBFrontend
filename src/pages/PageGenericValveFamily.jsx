@@ -76,7 +76,7 @@ export default function PageGenericValveFamilies() {
                         </ListItem>
                         <ListItem>
                             <ListItemAvatar>
-                                <Avatar sx={{ bgcolor: '#FFF7EB', color: '#FFF7EB' }} variant='rounded'/>
+                                <Avatar sx={{ bgcolor: '#EBDFE1', color: '#EBDFE1' }} variant='rounded'/>
                             </ListItemAvatar>
                             <ListItemText primary="Not Available" secondary="The average is not available for that angle" />
                         </ListItem>
