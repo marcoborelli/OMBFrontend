@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Card, CardContent, CardMedia, TextField, Grid } from '@mui/material'
 import CardValveInstance from '../components/CardValveInstance'
+import TableMainAngles from '../components/TableMainAngles'
 import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
@@ -79,6 +80,11 @@ export default function PageValveModel() {
                         />
 
                         <CardContent>
+                            <TableMainAngles theoric_values={valve.valve_family.theoric_values} real_values={valve.average_values} colWidth={"20px"} digits={1} />
+
+                            <br />
+                            <br />
+
                             <TextField
                                 label="Code"
                                 value={valve._id}
