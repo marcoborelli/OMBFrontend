@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
 
-export default function TableMainAngles({ theoric_values, real_values, colWidth, digits }) {
+export default function TableMainAngles({ theoric_values, real_values, colWidth, digits, showRowName }) {
     const getColorObj = (theoric, real) => {
         let res
 
@@ -21,6 +21,7 @@ export default function TableMainAngles({ theoric_values, real_values, colWidth,
             <Table size="small" >
                 <TableHead>
                     <TableRow>
+                        {showRowName && <TableCell />}
                         <TableCell sx={{ maxWidth: colWidth }}>BTO</TableCell>
                         <TableCell sx={{ maxWidth: colWidth }}>RUN</TableCell>
                         <TableCell sx={{ maxWidth: colWidth }}>ETO</TableCell>
@@ -31,6 +32,7 @@ export default function TableMainAngles({ theoric_values, real_values, colWidth,
                 </TableHead>
                 <TableBody>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        {showRowName && <TableCell>Theoric</TableCell>}
                         {Object.keys(theoric_values).map((key) => (
                             <TableCell key={`${key}_t`} sx={{ maxWidth: colWidth }}>
                                 {theoric_values?.[key] ? theoric_values[key].toFixed(digits) : "N.A."}
@@ -38,6 +40,7 @@ export default function TableMainAngles({ theoric_values, real_values, colWidth,
                         ))}
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                        {showRowName && <TableCell>Actual</TableCell>}
                         {Object.keys(real_values).map((key) => (
                             <TableCell key={`${key}_t`} sx={{ maxWidth: colWidth, backgroundColor: getColorObj(theoric_values[key], real_values[key]) }}>
                                 {real_values?.[key] ? real_values[key].toFixed(digits) : "N.A."}
