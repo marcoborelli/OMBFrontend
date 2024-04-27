@@ -93,7 +93,7 @@ export default function PageValveModel() {
                             <Typography variant="body2" color="text.secondary">
                                 Valori teorici/Media dei valori reali
                             </Typography>
-                            <TableMainAngles theoric_values={family.theoric_values} real_values={family.average_values} />
+                            <TableMainAngles theoric_values={family.theoric_values} real_values={family.average_values} colWidth={"20px"} />
                         </CardContent>
                     </Card>
                 </Grid>

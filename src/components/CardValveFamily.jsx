@@ -21,7 +21,7 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
                         {base_code}
                     </Typography>
 
-                    <TableMainAngles theoric_values={theoric_values} real_values={real_values}/>
+                    <TableMainAngles theoric_values={theoric_values} real_values={real_values} colWidth={"1px"}/>
                 </CardContent>
             </CardActionArea>
         </Card>

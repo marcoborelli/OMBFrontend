@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
 
-export default function TableMainAngles({ theoric_values, real_values, colors }) {
-    const colWidth = "1px" //in questo modo la colonna e' larga il minimo
+export default function TableMainAngles({ theoric_values, real_values, colWidth }) {
     const digits = 0
 
     const getColorObj = (theoric, real) => {
