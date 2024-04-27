@@ -5,7 +5,9 @@ export default function TableMainAngles({ theoric_values, real_values, colWidth,
     const getColorObj = (theoric, real) => {
         let res
 
-        if (real <= theoric) {
+        if (isNaN(real) || !real) {
+            res = '#FFF7EB'
+        } else if (real <= theoric) {
             res = 'none'
         } else if (real > theoric && real < 30 * theoric / 100 + theoric) {
             res = '#FCD299' //se e' maggiore del teroico ma minore del 30% in piu'
@@ -14,6 +16,10 @@ export default function TableMainAngles({ theoric_values, real_values, colWidth,
         }
 
         return res
+    }
+
+    if (!real_values) {
+        real_values = {}
     }
 
     return (
@@ -41,7 +47,7 @@ export default function TableMainAngles({ theoric_values, real_values, colWidth,
                     </TableRow>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                         {showRowName && <TableCell>Actual</TableCell>}
-                        {Object.keys(real_values).map((key) => (
+                        {Object.keys(theoric_values).map((key) => (
                             <TableCell key={`${key}_t`} sx={{ maxWidth: colWidth, backgroundColor: getColorObj(theoric_values[key], real_values[key]) }}>
                                 {real_values?.[key] ? real_values[key].toFixed(digits) : "N.A."}
                             </TableCell>
