@@ -65,12 +65,14 @@ export default function PageVlaveInstance() {
                             <br />
                             <br />
 
-                            <TextField //TODO: inserire collegamento a valvola con quell'id
-                                label="Valve Model"
-                                value={instance.valve_model._id}
-                                InputProps={{ readOnly: true }}
-                                fullWidth
-                            />
+                            <Link to={`/models/${instance.valve_model._id}`}>
+                                <TextField
+                                    label="Valve Model"
+                                    value={instance.valve_model._id}
+                                    InputProps={{ readOnly: true }}
+                                    fullWidth
+                                />
+                            </Link>
                         </CardContent>
                     </Card>
                 </Grid>
