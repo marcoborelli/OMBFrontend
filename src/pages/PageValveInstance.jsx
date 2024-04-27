@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Card, CardContent, TextField, Grid } from '@mui/material'
 import CardTest from '../components/CardTest'
+import TableMainAngles from '../components/TableMainAngles'
 import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
 import api from '../services/api'
@@ -73,6 +74,10 @@ export default function PageVlaveInstance() {
                                     fullWidth
                                 />
                             </Link>
+
+                            <br />
+                            <br />
+                            <TableMainAngles theoric_values={instance.valve_model.valve_family.theoric_values} real_values={instance.average_values} colWidth={"20px"} digits={1} />
                         </CardContent>
                     </Card>
                 </Grid>
