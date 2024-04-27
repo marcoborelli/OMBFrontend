@@ -40,7 +40,7 @@ export default function PageGenericValveFamilies() {
     }
 
     const fake_theoric_values = { bto: 106, runo: 40, eto: 78, btc: 106, runc: 40, etc: 65 }
-    const fake_actual_values = { bto: 108, runo: 38, eto: 78, btc: 150, runc: 41, etc: 40 }
+    const fake_actual_values = { bto: 108, runo: null, eto: 78, btc: 150, runc: 41, etc: 40 }
 
     return (
         <>
@@ -73,6 +73,12 @@ export default function PageGenericValveFamilies() {
                                 <Avatar sx={{ bgcolor: '#FCD299', color: '#FCD299' }} variant='rounded'/>
                             </ListItemAvatar>
                             <ListItemText primary="Warning" secondary="The average is higher than the theoric one (but less than 30%)" />
+                        </ListItem>
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar sx={{ bgcolor: '#FFF7EB', color: '#FFF7EB' }} variant='rounded'/>
+                            </ListItemAvatar>
+                            <ListItemText primary="Not Available" secondary="The average is not available for that angle" />
                         </ListItem>
                     </List>
 
