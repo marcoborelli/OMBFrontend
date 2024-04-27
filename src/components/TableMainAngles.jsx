@@ -9,11 +9,11 @@ export default function TableMainAngles({ theoric_values, real_values, colors })
         let res
 
         if (real <= theoric) {
-            res = "none"
+            res = 'none'
         } else if (real > theoric && real < 30 * theoric / 100 + theoric) {
-            res = "orange" //se è maggiore del teroico ma minore del 30% in più
+            res = '#FCD299' //se e' maggiore del teroico ma minore del 30% in piu'
         } else {
-            res = "red"
+            res = '#FF7F7F'
         }
 
         return res
