@@ -15,6 +15,9 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
                         height: '180px',
                         objectFit: 'none'
                     }}
+                    onError={(e) => {
+                        e.target.src = "/noimage.jpg";
+                    }}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" align="center" component="div">
