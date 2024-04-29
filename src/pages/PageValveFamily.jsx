@@ -78,6 +78,9 @@ export default function PageValveModel() {
                             height="375"
                             image={family.img_url}
                             alt={family._id}
+                            onError={(e) => {
+                                e.target.src = "/noimage.jpg";
+                            }}
                         />
 
                         <CardContent>
