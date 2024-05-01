@@ -1,8 +1,21 @@
-import { useState, createRef } from 'react'
+import { useState, useEffect, createRef } from 'react'
 import TextField from '@mui/material/TextField'
 
-const MultiCellInput = ({ length, isRequired, isReadOnly, onInputChange_callback }) => {
+export default function MultiCellInput({ length, isRequired, default_values, onInputChange_callback }) {
     const [values, setValues] = useState(Array(length).fill(''))
+
+    useEffect(() => {
+        if (default_values) {
+            const tmp = [...values]
+            for (let i = 0; i < default_values.length; i++) {
+                tmp[i] = default_values[i]
+            }
+
+            setValues(tmp)
+            onInputChange_callback(tmp)
+        }
+    })
+
     const inputs = Array(length).fill().map(() => createRef())
 
     const handleChange = (index) => (event) => {
@@ -27,11 +40,9 @@ const MultiCellInput = ({ length, isRequired, isReadOnly, onInputChange_callback
                     inputProps={{ maxLength: 1 }}
                     inputRef={inputs[index]}
                     required={isRequired}
-                    InputProps={{ readOnly: isReadOnly }}
+                    InputProps={{ disabled: index < default_values?.length }}
                 />
             ))}
         </div>
     )
 }
-
-export default MultiCellInput
