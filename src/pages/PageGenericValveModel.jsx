@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid } from '@mui/material'
+import { Grid, IconButton } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
 import CardValveModel from '../components/CardValveModel'
 import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
@@ -43,6 +44,9 @@ export default function PageGenericValveModel() {
             <Navbar />
             <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
                 <Searchbar api_endpoint='api/valves/all' bar_width='75%' default_text='Find a valve model' onChange_func={filterValveModels} />
+                <IconButton aria-label="add family" size="large" href="/models/add">
+                    <AddIcon />
+                </IconButton>
             </Grid>
             <Grid item style={{ maxHeight: '75vh', overflowY: 'auto', paddingTop: '3vh' }}>
                 <Grid container spacing={2} justifyContent="center">

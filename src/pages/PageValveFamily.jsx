@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Card, CardContent, CardMedia, TextField, Grid, Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, TextField, Grid, IconButton } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
 import CardValveModel from '../components/CardValveModel'
 import TableMainAngles from '../components/TableMainAngles'
 import Legend from '../components/Legend'
@@ -102,6 +103,9 @@ export default function PageValveModel() {
                 <Grid item xs={12} sm={9} style={{ paddingTop: '3vh' }}>
                     <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
                         <Searchbar api_endpoint='api/valves/all' bar_width='75%' default_text='Find a valve model' onChange_func={filterModels} />
+                        <IconButton aria-label="add family" size="large" href="/models/add">
+                            <AddIcon />
+                        </IconButton>
                     </Grid>
                     <Grid container spacing={2} justifyContent="center" style={{ maxHeight: '70vh', overflowY: 'auto', paddingTop: '3vh', }}>
                         {filteredModels.map((model) => (
