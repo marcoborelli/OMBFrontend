@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { TextField, Button, Grid, Typography, Divider, Chip } from '@mui/material';
+import { useState } from 'react'
+import { TextField, Button, Grid, Typography, Divider, Chip } from '@mui/material'
+import MultiCellInput from './MultiCellInput'
 
 
 export default function AddValveFamily({ onSubmit_func }) {
@@ -26,17 +27,15 @@ export default function AddValveFamily({ onSubmit_func }) {
 
     return (
         <form onSubmit={handleSubmit}>
+            <Typography variant="body2" color="text.secondary">
+                ID *
+            </Typography>
 
-            <TextField
-                type='text'
-                variant='outlined'
-                label='ID'
-                onChange={e => setValveFamily({ ...valveFamily, _id: e.target.value })}
-                value={valveFamily._id}
-                fullWidth
-                required
-                sx={{ mb: 2 }}
-            />
+            <MultiCellInput length={10} isRequired onInputChange_callback={val => setValveFamily({ ...valveFamily, _id: val.join('').trim() })} />
+
+            <br />
+            <br />
+
             <TextField
                 type='text'
                 variant='outlined'
