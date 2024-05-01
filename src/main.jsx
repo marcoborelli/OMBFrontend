@@ -6,6 +6,7 @@ import PageGenericValveModel from './pages/PageGenericValveModel'
 import PageGenericValveFamilies from './pages/PageGenericValveFamily'
 import PageGenericTest from './pages/PageGenericTest'
 import PageAddValveFamily from './pages/PageAddValveFamily'
+import PageAddValveModel from './pages/PageAddValveModel'
 import PageValveFamily from './pages/PageValveFamily'
 import PageValveModel from './pages/PageValveModel'
 import PageValveInstance from './pages/PageValveInstance'
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: '/families/:familyID',
     element: <PageValveFamily />
+  },
+  {
+    path: '/models/add',
+    element: <PageAddValveModel />
   },
   {
     path: '/models/:modelID',
