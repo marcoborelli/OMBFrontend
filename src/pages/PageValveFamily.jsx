@@ -77,10 +77,10 @@ export default function PageValveModel() {
                         <CardMedia
                             component="img"
                             height="375"
-                            image={family.img_url}
+                            image={family.img_url || "/noimage.jpg"}
                             alt={family._id}
                             onError={(e) => {
-                                e.target.src = "/noimage.jpg";
+                                e.target.src = "/noimage.jpg"
                             }}
                         />
 

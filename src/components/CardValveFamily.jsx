@@ -8,7 +8,7 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={img_url}
+                    image={img_url || "/noimage.jpg"}
                     alt={base_code}
                     sx={{
                         maxWidth: '100%',
@@ -16,7 +16,7 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
                         objectFit: 'none'
                     }}
                     onError={(e) => {
-                        e.target.src = "/noimage.jpg";
+                        e.target.src = "/noimage.jpg"
                     }}
                 />
                 <CardContent>
@@ -24,7 +24,7 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
                         {base_code}
                     </Typography>
 
-                    <TableMainAngles theoric_values={theoric_values} real_values={real_values} colWidth={"1px"}/>
+                    <TableMainAngles theoric_values={theoric_values} real_values={real_values} colWidth={"1px"} />
                 </CardContent>
             </CardActionArea>
         </Card>
