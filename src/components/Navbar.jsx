@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material'
+import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, Grid } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import AdbIcon from '@mui/icons-material/Adb'
 import { Link } from 'react-router-dom'
 
 const pages = ['families', 'models', 'tests']
@@ -30,24 +29,16 @@ function Navbar() {
         <AppBar position="static" style={{ backgroundColor: "#78A3C5", boxShadow: "none" }}>
             <Container maxWidth="xxl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
+                    <Box
+                        component="img"
                         sx={{
-                            mr: 2,
+                            maxHeight: '7vh',
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.2rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
+                            mr: 1
                         }}
-                    >
-                        OMB VALVES
-                    </Typography>
+                        alt="OMB Logo"
+                        src="/logo.png"
+                    />
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -87,25 +78,19 @@ function Navbar() {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        OMB VALVES
-                    </Typography>
+
+                    <Grid item container justifyContent="center">
+                        <Box
+                            component="img"
+                            sx={{
+                                maxHeight: '7vh',
+                                display: { xs: 'flex', md: 'none' },
+                            }}
+                            alt="OMB Logo"
+                            src="/logo.png"
+                        />
+                    </Grid>
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Link to={`/${page}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
