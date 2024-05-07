@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     element: <PageValveFamily />
   },
   {
-    path: '/models/add',
+    path: '/models/add/:familId?',
     element: <PageAddValveModel />
   },
   {

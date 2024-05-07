@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { Container, Grid, Paper } from '@mui/material'
 import Navbar from '../components/Navbar'
 import AddValveModel from '../components/AddValveModel'
@@ -6,6 +7,7 @@ import Loading from '../components/Loading'
 import api from '../services/api'
 
 export default function PageGenericTest() {
+    const { familId } = useParams();
     const [familyIds, setModelsIds] = useState()
     const [loading, setLoading] = useState(true)
 
@@ -46,7 +48,7 @@ export default function PageGenericTest() {
             <Container maxWidth="md" style={{ marginTop: '6vh', marginBottom: '20vh' }}>
                 <Grid container justifyContent="center" alignItems="center" style={{ height: '100%' }}>
                     <Paper elevation={3} style={{ padding: 20, borderRadius: 10, backgroundColor: 'white', width: '100%' }}>
-                        <AddValveModel family_ids={familyIds} onSubmit_func={addNewValve} />
+                        <AddValveModel family_ids={familyIds} onSubmit_func={addNewValve} default_family={familId}/>
                     </Paper>
                 </Grid>
             </Container>

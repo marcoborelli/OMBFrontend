@@ -3,10 +3,10 @@ import { TextField, Button, MenuItem, Typography } from '@mui/material'
 import MultiCellInput from './MultiCellInput'
 
 
-export default function AddValveFamily({ family_ids, onSubmit_func }) {
+export default function AddValveFamily({ family_ids, onSubmit_func, default_family }) {
     const [valveModel, setValveModel] = useState({
         _id: '',
-        valve_family: '',
+        valve_family: family_ids.includes(default_family) ? default_family : '',
         description: '',
         gear_model: '',
         ma_gear: 0,

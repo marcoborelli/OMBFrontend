@@ -103,7 +103,7 @@ export default function PageValveModel() {
                 <Grid item xs={12} sm={9} style={{ paddingTop: '3vh' }}>
                     <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
                         <Searchbar api_endpoint='api/valves/all' bar_width='75%' default_text='Find a valve model' onChange_func={filterModels} />
-                        <IconButton aria-label="add family" size="large" href="/models/add">
+                        <IconButton aria-label="add family" size="large" href={`/models/add/${family._id}`}>
                             <AddIcon />
                         </IconButton>
                     </Grid>
