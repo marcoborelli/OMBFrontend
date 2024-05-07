@@ -6,7 +6,7 @@ import AddValveModel from '../components/AddValveModel'
 import Loading from '../components/Loading'
 import api from '../services/api'
 
-export default function PageGenericTest() {
+export default function PageAddValveModel() {
     const { familId } = useParams();
     const [familyIds, setModelsIds] = useState()
     const [loading, setLoading] = useState(true)

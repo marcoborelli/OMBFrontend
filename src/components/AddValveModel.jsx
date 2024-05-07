@@ -3,7 +3,7 @@ import { TextField, Button, MenuItem, Typography } from '@mui/material'
 import MultiCellInput from './MultiCellInput'
 
 
-export default function AddValveFamily({ family_ids, onSubmit_func, default_family }) {
+export default function AddValveModel({ family_ids, onSubmit_func, default_family }) {
     const [valveModel, setValveModel] = useState({
         _id: '',
         valve_family: family_ids.includes(default_family) ? default_family : '',
@@ -94,7 +94,7 @@ export default function AddValveFamily({ family_ids, onSubmit_func, default_fami
 
             <br />
 
-            <Button variant="outlined" type="submit">Add new family</Button>
+            <Button variant="outlined" type="submit">Add new model</Button>
         </form>
     )
 }

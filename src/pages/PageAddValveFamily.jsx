@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import AddValveFamily from '../components/AddValveFamily'
 import api from '../services/api'
 
-export default function PageGenericTest() {
+export default function PageAddValveFamily() {
     const addNewFamily = async (to_insert) => {
         try {
             await api.post('api/families/add', to_insert);
