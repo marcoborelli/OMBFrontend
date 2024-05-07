@@ -17,7 +17,7 @@ import PageError404 from './pages/PageError404'
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
+    element: <PageGenericValveFamilies />
   },
   {
     path: '/families',
