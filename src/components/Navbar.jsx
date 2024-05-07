@@ -79,7 +79,15 @@ function Navbar() {
                         </Menu>
                     </Box>
 
-                    <Grid item container justifyContent="center">
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        {pages.map((page) => (
+                            <Link to={`/${page}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>{page}</Button>
+                            </Link>
+                        ))}
+                    </Box>
+
+                    <Grid container justifyContent="center">
                         <Box
                             component="img"
                             sx={{
@@ -90,14 +98,6 @@ function Navbar() {
                             src="/logo.png"
                         />
                     </Grid>
-
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Link to={`/${page}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>{page}</Button>
-                            </Link>
-                        ))}
-                    </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
