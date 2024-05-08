@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Grid } from '@mui/material'
 import CardTest from '../components/CardTest'
-import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
 import api from '../services/api'
@@ -10,10 +9,8 @@ import api from '../services/api'
 export default function PageGenericTest() {
     const [tests, setTests] = useState([])
     const [filteredTests, setFilteredTests] = useState([])
-    const [loading, setLoading] = useState(false)
 
     const fetchData = async () => {
-        setLoading(true)
 
         try {
             const response = await api.get(`api/tests/all`)
@@ -21,8 +18,6 @@ export default function PageGenericTest() {
             setFilteredTests(response.data)
         } catch (error) {
             console.error('Error fetching user data:', error)
-        } finally {
-            setLoading(false)
         }
     }
 
@@ -34,10 +29,6 @@ export default function PageGenericTest() {
         setFilteredTests(tests.filter((test) => {
             return test.instance_id.toLowerCase().trim().includes(e.target.value.toLowerCase().trim())
         }))
-    }
-
-    if (loading) {
-        return <Loading text="Caricamento in corso..."></Loading>
     }
 
     return (
