@@ -8,23 +8,25 @@ import Searchbar from '../components/Searchbar'
 import api from '../services/api'
 
 export default function PageGenericTest() {
-    const [tests, setTests] = useState()
-    const [filteredTests, setFilteredTests] = useState()
-    const [loading, setLoading] = useState(true)
+    const [tests, setTests] = useState([])
+    const [filteredTests, setFilteredTests] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    const fetchData = async () => {
+        setLoading(true)
+
+        try {
+            const response = await api.get(`api/tests/all`)
+            setTests(response.data)
+            setFilteredTests(response.data)
+        } catch (error) {
+            console.error('Error fetching user data:', error)
+        } finally {
+            setLoading(false)
+        }
+    }
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await api.get(`api/tests/all`)
-                setTests(response.data)
-                setFilteredTests(response.data)
-            } catch (error) {
-                console.error('Error fetching user data:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-
         fetchData()
     }, [])
 
