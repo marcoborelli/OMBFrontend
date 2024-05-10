@@ -17,7 +17,7 @@ export default function PageGenericTest() {
             return
 
         try {
-            const response = await api.get(`api/tests/getpage/${currentPage}`)
+            const response = await api.get(`api/tests/all?page_number=${currentPage}`)
 
             setTests([...tests, ...response.data])
             setFilteredTests([...filteredTests, ...response.data])
