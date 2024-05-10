@@ -10,8 +10,6 @@ export default function Searchbar({ api_endpoint, bar_width, default_text, onCha
             try {
                 const response = await api.get(api_endpoint)
                 setMyOptions(response.data.map(val => val._id))
-
-                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching user data:', error)
             }

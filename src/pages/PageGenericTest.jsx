@@ -69,7 +69,7 @@ export default function PageGenericTest() {
                         </Grid>
                     ))}
                 </Grid>
-                {(currentPage <= pagesNumber) &&
+                {(currentPage <= pagesNumber || !pagesNumber) &&
                     <Box flexDirection="column" justifyContent="center" alignItems="center" sx={{ display: 'flex', paddingTop: '3vh' }}>
                         <CircularProgress />
                     </Box>
