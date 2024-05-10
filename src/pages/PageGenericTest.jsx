@@ -30,7 +30,7 @@ export default function PageGenericTest() {
     const getTestInfo = async () => {
         try {
             const response = await api.get(`api/tests/info`)
-            setPagesNumber(Math.ceil(response.elements_number / response.elements_for_page))
+            setPagesNumber(Math.ceil(parseInt(response.data.elements_number) / parseInt(response.data.elements_for_page)))
         } catch (error) {
             console.error('Error fetching infos:', error)
         }
