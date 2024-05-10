@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid } from '@mui/material'
+import { Grid, Box, CircularProgress } from '@mui/material'
 import CardTest from '../components/CardTest'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
@@ -69,6 +69,11 @@ export default function PageGenericTest() {
                         </Grid>
                     ))}
                 </Grid>
+                {(currentPage <= pagesNumber) &&
+                    <Box flexDirection="column" justifyContent="center" alignItems="center" sx={{ display: 'flex', paddingTop: '3vh' }}>
+                        <CircularProgress />
+                    </Box>
+                }
             </Grid >
         </>
     )
