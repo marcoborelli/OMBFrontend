@@ -53,7 +53,7 @@ export default function PageGenericValveModel() {
                     {filteredValves.map((valve) => (
                         <Grid item key={valve._id}>
                             <Link to={`/models/${valve._id}`} style={{ textDecoration: 'none' }}>
-                                <CardValveModel code={valve._id} description={valve.description} img_url={valve.img_url} />
+                                <CardValveModel code={valve._id} gear_model={valve.gear_model} description={valve.description} img_url={valve.img_url} />
                             </Link>
                         </Grid>
                     ))}
