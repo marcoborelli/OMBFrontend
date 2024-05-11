@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Card, CardContent, CardMedia, TextField, Grid, IconButton } from '@mui/material'
+import { Card, CardContent, CardMedia, TextField, Grid, IconButton, Stack } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import CardValveInstance from '../components/CardValveInstance'
 import TableMainAngles from '../components/TableMainAngles'
@@ -145,10 +145,12 @@ export default function PageValveModel() {
                 </Grid>
                 <Grid item xs={12} sm={9} style={{ paddingTop: '3vh' }}>
                     <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
-                        <Searchbar api_endpoint='api/instances/all' bar_width='75%' default_text='Find a valve model instance' onChange_func={filterInstances} />
-                        <IconButton aria-label="add instance" size="large" href={`/instances/add/${valve._id}`}>
-                            <AddIcon />
-                        </IconButton>
+                        <Stack spacing={1} direction="row" sx={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                            <Searchbar api_endpoint='api/instances/all' bar_width='75%' default_text='Find a valve model instance' onChange_func={filterInstances} />
+                            <IconButton aria-label="add instance" size="large" href={`/instances/add/${valve._id}`}>
+                                <AddIcon />
+                            </IconButton>
+                        </Stack>
                     </Grid>
                     <Grid container spacing={2} justifyContent="center" style={{ maxHeight: '70vh', overflowY: 'auto', paddingTop: '3vh', }}>
                         {filteredInstances.map((instance) => (

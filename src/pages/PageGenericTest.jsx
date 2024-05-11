@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Grid, Box, CircularProgress, Button } from '@mui/material'
+import { Grid, Box, CircularProgress, Button, Stack } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import CardTest from '../components/CardTest'
 import Navbar from '../components/Navbar'
@@ -57,10 +57,12 @@ export default function PageGenericTest() {
         <>
             <Navbar />
             <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
-                <Searchbar api_endpoint='api/instances/all?showTests=false&showModel=false' bar_width='75%' default_text='Find a test made on a valve instance' onChange_func={(e) => setFilterInstanceId(e.target.value.toUpperCase())} />
-                <Button variant="outlined" onClick={() => setIsNewSearch(true)}>
-                    <SearchIcon />
-                </Button>
+                <Stack spacing={1} direction="row" sx={{ width: '100%', justifyContent: 'center' }}>
+                    <Searchbar api_endpoint='api/instances/all?showTests=false&showModel=false' bar_width='75%' default_text='Find a test made on a valve instance' onChange_func={(e) => setFilterInstanceId(e.target.value.toUpperCase())} />
+                    <Button variant="outlined" onClick={() => setIsNewSearch(true)}>
+                        <SearchIcon />
+                    </Button>
+                </Stack>
             </Grid>
             <Grid item style={{ maxHeight: '75vh', overflowY: 'auto', paddingTop: '3vh' }} onScroll={handleScroll}>
                 <Grid container spacing={2} justifyContent="center">
