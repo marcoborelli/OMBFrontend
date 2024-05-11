@@ -57,7 +57,7 @@ export default function PageGenericTest() {
         <>
             <Navbar />
             <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
-                <Searchbar api_endpoint='api/instances/all' bar_width='75%' default_text='Find a test made on a valve instance' onChange_func={(e) => setFilterInstanceId(e.target.value.toUpperCase())} />
+                <Searchbar api_endpoint='api/instances/all?showTests=false&showModel=false' bar_width='75%' default_text='Find a test made on a valve instance' onChange_func={(e) => setFilterInstanceId(e.target.value.toUpperCase())} />
                 <Button variant="outlined" onClick={() => setIsNewSearch(true)}>
                     <SearchIcon />
                 </Button>
