@@ -11,11 +11,13 @@ export default function PageGenericTest() {
     const [filteredTests, setFilteredTests] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [pagesNumber, setPagesNumber] = useState()
+    const [isLoading, setIsLoading] = useState(true)
 
     const fetchData = async () => {
         if (currentPage > pagesNumber)
             return
 
+        setIsLoading(true)
         try {
             const response = await api.get(`api/tests/all?page_number=${currentPage}`)
 
@@ -24,6 +26,8 @@ export default function PageGenericTest() {
             setCurrentPage(currentPage + 1)
         } catch (error) {
             console.error('Error fetching user data:', error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -42,7 +46,7 @@ export default function PageGenericTest() {
     }, [])
 
     const handleScroll = (e) => {
-        if (e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
+        if (!isLoading && e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight) {
             fetchData()
         }
     }
