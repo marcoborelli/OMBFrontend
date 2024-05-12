@@ -4,7 +4,7 @@ import TableMainAngles from './TableMainAngles'
 
 export default function CardValveFamily({ base_code, img_url, theoric_values, real_values }) {
     return (
-        <Card sx={{ width: 330 }} style={{ backgroundColor: '#A2C6D8' }}>
+        <Card sx={{ width: 330 }} style={{ backgroundColor: '#CAD8E6' }}>
             <CardActionArea>
                 <CardMedia
                     component="img"

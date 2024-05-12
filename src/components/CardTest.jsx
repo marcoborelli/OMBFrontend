@@ -4,7 +4,7 @@ import GraphTest from './GraphTest'
 
 export default function CardTest({ instance_id, timestamp, arr_data }) {
     return (
-        <Card sx={{ width: 330 }} style={{ backgroundColor: '#A2C6D8' }}>
+        <Card sx={{ width: 330 }} style={{ backgroundColor: '#CAD8E6' }}>
             <CardActionArea>
                 <GraphTest height={175} data={arr_data.filter(d => d.isOpening)} isInCard />
                 <GraphTest height={175} data={arr_data.filter(d => !d.isOpening)} isInCard isClosing/>

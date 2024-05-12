@@ -3,7 +3,7 @@ import { CardActionArea, Typography, CardMedia, CardContent, Card } from '@mui/m
 
 export default function CardValveModel({ code, description, gear_model, img_url }) {
     return (
-        <Card sx={{ width: 330 }} style={{ backgroundColor: '#A2C6D8' }}>
+        <Card sx={{ width: 330 }} style={{ backgroundColor: '#CAD8E6' }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
