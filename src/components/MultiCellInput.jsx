@@ -1,8 +1,9 @@
 import { useState, useEffect, createRef } from 'react'
-import TextField from '@mui/material/TextField'
+import { TextField, useMediaQuery } from '@mui/material'
 
 export default function MultiCellInput({ length, isRequired, default_values, onInputChange_callback }) {
     const [values, setValues] = useState(Array(length).fill(''))
+    const isSmallScreen = useMediaQuery('(max-width:600px)')
 
     useEffect(() => {
         if (default_values) {
@@ -40,7 +41,10 @@ export default function MultiCellInput({ length, isRequired, default_values, onI
                     inputProps={{ maxLength: 1 }}
                     inputRef={inputs[index]}
                     required={isRequired}
-                    InputProps={{ disabled: index < default_values?.length }}
+                    InputProps={{
+                        disabled: index < default_values?.length,
+                        style: { fontSize: isSmallScreen ? '60%' : '100%' }
+                    }}
                 />
             ))}
         </div>
