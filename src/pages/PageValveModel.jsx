@@ -89,55 +89,46 @@ export default function PageValveModel() {
                                 label="Code"
                                 value={valve._id}
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <TextField
                                 label="Description"
                                 value={valve.description}
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 multiline
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <TextField
                                 label="Gear Model"
                                 value={valve.gear_model}
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <TextField
                                 label="M.A. Gear"
                                 value={valve.ma_gear}
                                 type="number"
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <Link to={`/families/${valve.valve_family._id}`}>
                                 <TextField
                                     label="Valve Family"
                                     value={valve.valve_family._id}
                                     InputProps={{ readOnly: true }}
+                                    sx={{ paddingBottom: '2vh' }}
                                     fullWidth
                                 />
                             </Link>
 
-                            <br />
-                            <br />
                             <TableMainAngles theoric_values={valve.valve_family.theoric_values} real_values={valve.average_values} colWidth={"20px"} digits={1} showRowName />
                             <Legend avatar_width={22} avatar_height={22} primary_size={14} secondary_size={12} />
                         </CardContent>

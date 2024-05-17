@@ -89,11 +89,9 @@ export default function PageValveModel() {
                                 label="Code"
                                 value={family._id}
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <TableMainAngles theoric_values={family.theoric_values} real_values={family.average_values} colWidth={"20px"} digits={1} showRowName />
                             <Legend avatar_width={22} avatar_height={22} primary_size={14} secondary_size={12} />

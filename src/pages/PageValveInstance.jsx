@@ -51,33 +51,28 @@ export default function PageVlaveInstance() {
                                 label="Serial number"
                                 value={instance._id}
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <TextField
                                 label="Job Number"
                                 value={instance.job_number}
                                 InputProps={{ readOnly: true }}
+                                sx={{ paddingBottom: '2vh' }}
                                 fullWidth
                             />
-
-                            <br />
-                            <br />
 
                             <Link to={`/models/${instance.valve_model._id}`}>
                                 <TextField
                                     label="Valve Model"
                                     value={instance.valve_model._id}
                                     InputProps={{ readOnly: true }}
+                                    sx={{ paddingBottom: '2vh' }}
                                     fullWidth
                                 />
                             </Link>
 
-                            <br />
-                            <br />
                             <TableMainAngles theoric_values={instance.valve_model.valve_family.theoric_values} real_values={instance.average_values} colWidth={"20px"} digits={1} showRowName />
                             <Legend avatar_width={22} avatar_height={22} primary_size={14} secondary_size={12} />
                         </CardContent>
