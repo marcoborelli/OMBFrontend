@@ -31,6 +31,20 @@ export default function MultiCellInput({ length, isRequired, default_values, onI
         onInputChange_callback(newValues)
     }
 
+    const handleKeyDown = (index) => (event) => {
+        const minLength = default_values?.length ? default_values.length : 0
+
+        if (index > minLength && event.key === 'Backspace' && event.target.value === '') {
+            const newValues = [...values]
+            newValues[index - 1] = ''
+            setValues(newValues)
+
+            inputs[index - 1].current.focus()
+
+            onInputChange_callback(newValues)
+        }
+    }
+
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             {values.map((value, index) => (
@@ -38,6 +52,7 @@ export default function MultiCellInput({ length, isRequired, default_values, onI
                     key={index}
                     value={value}
                     onChange={handleChange(index)}
+                    onKeyDown={handleKeyDown(index)}
                     inputProps={{ maxLength: 1 }}
                     inputRef={inputs[index]}
                     required={isRequired}
