@@ -21,7 +21,7 @@ export default function MultiCellInput({ length, isRequired, default_values, onI
 
     const handleChange = (index) => (event) => {
         const newValues = [...values]
-        newValues[index] = event.target.value.toUpperCase()
+        newValues[index] = event.target.value.toUpperCase().trim()
         setValues(newValues)
 
         if (event.target.value && index < length - 1) {
