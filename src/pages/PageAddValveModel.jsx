@@ -34,7 +34,7 @@ export default function PageAddValveModel() {
             console.error('Error adding new valve model', error);
         }
 
-        window.location.href = '/models'
+        window.location.href = `${import.meta.env.BASE_URL}/models`
     }
 
 

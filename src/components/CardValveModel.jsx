@@ -7,7 +7,7 @@ export default function CardValveModel({ code, description, gear_model, img_url 
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={img_url || "/noimage.jpg"}
+                    image={img_url || `${import.meta.env.BASE_URL}/noimage.jpg`}
                     alt={code}
                     sx={{
                         maxWidth: '100%',
@@ -15,7 +15,7 @@ export default function CardValveModel({ code, description, gear_model, img_url 
                         objectFit: 'none'
                     }}
                     onError={(e) => {
-                        e.target.src = "/noimage.jpg"
+                        e.target.src = `${import.meta.env.BASE_URL}/noimage.jpg`
                     }}
                 />
                 <CardContent>

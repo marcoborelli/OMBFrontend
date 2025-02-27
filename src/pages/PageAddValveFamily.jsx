@@ -11,7 +11,7 @@ export default function PageAddValveFamily() {
             console.error('Error adding new family', error);
         }
 
-        window.location.href = '/families'
+        window.location.href = `${import.meta.env.BASE_URL}/families`
     }
 
     return (

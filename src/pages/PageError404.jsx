@@ -16,7 +16,7 @@ export default function PageError404() {
                                 <div className="contant_box_404">
                                     <h3 className="h2">Sembra che ti sia perso</h3>
                                     <p>la pagina che stai cercando non esiste</p>
-                                    <a href="/" className="link_404">Go to Home</a>
+                                    <a href={`${import.meta.env.BASE_URL}/`} className="link_404">Go to Home</a>
                                 </div>
                             </div>
                         </div>

@@ -63,7 +63,7 @@ export default function PageVlaveInstance() {
                                 fullWidth
                             />
 
-                            <Link to={`/models/${instance.valve_model._id}`}>
+                            <Link to={`${import.meta.env.BASE_URL}/models/${instance.valve_model._id}`}>
                                 <TextField
                                     label="Valve Model"
                                     value={instance.valve_model._id}
@@ -82,7 +82,7 @@ export default function PageVlaveInstance() {
                     <Grid container spacing={2} justifyContent="center">
                         {instance.tests.map((test) => (
                             <Grid item key={test._id}>
-                                <Link to={`/tests/${test._id}`} style={{ textDecoration: 'none' }}>
+                                <Link to={`${import.meta.env.BASE_URL}/tests/${test._id}`} style={{ textDecoration: 'none' }}>
                                     <CardTest instance_id="" timestamp={test.timestamp} arr_data={test.data} />
                                 </Link>
                             </Grid>

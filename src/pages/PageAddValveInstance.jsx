@@ -34,7 +34,7 @@ export default function PageAddValveInstance() {
             console.error('Error adding new valve model', error);
         }
 
-        window.location.href = `/instances/${to_insert._id}`
+        window.location.href = `${import.meta.env.BASE_URL}/instances/${to_insert._id}`
     }
 
 

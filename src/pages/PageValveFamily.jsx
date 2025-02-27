@@ -77,10 +77,10 @@ export default function PageValveModel() {
                         <CardMedia
                             component="img"
                             height="375"
-                            image={family.img_url || "/noimage.jpg"}
+                            image={family.img_url || `${import.meta.env.BASE_URL}/noimage.jpg`}
                             alt={family._id}
                             onError={(e) => {
-                                e.target.src = "/noimage.jpg"
+                                e.target.src = `${import.meta.env.BASE_URL}/noimage.jpg`
                             }}
                         />
 
@@ -102,7 +102,7 @@ export default function PageValveModel() {
                     <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
                         <Stack spacing={1} direction="row" sx={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <Searchbar api_endpoint='api/valves/all' bar_width='75%' default_text='Find a valve model' onChange_func={filterModels} />
-                            <IconButton aria-label="add family" size="large" href={`/models/add/${family._id}`}>
+                            <IconButton aria-label="add family" size="large" href={`${import.meta.env.BASE_URL}/models/add/${family._id}`}>
                                 <AddIcon />
                             </IconButton>
                         </Stack>
@@ -110,7 +110,7 @@ export default function PageValveModel() {
                     <Grid container spacing={2} justifyContent="center" style={{ maxHeight: '70vh', overflowY: 'auto', paddingTop: '3vh', }}>
                         {filteredModels.map((model) => (
                             <Grid item key={model._id}>
-                                <Link to={`/models/${model._id}`} style={{ textDecoration: 'none' }}>
+                                <Link to={`${import.meta.env.BASE_URL}/models/${model._id}`} style={{ textDecoration: 'none' }}>
                                     <CardValveModel code={model._id} gear_model={model.gear_model} description={model.description} img_url={model.img_url} />
                                 </Link>
                             </Grid>

@@ -1,6 +1,6 @@
-import React from 'react'
+//import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+//import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import PageGenericValveModel from './pages/PageGenericValveModel'
 import PageGenericValveFamilies from './pages/PageGenericValveFamily'
@@ -16,47 +16,47 @@ import PageError404 from './pages/PageError404'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: `${import.meta.env.BASE_URL}/`,
     element: <PageGenericValveFamilies />
   },
   {
-    path: '/families',
+    path: `${import.meta.env.BASE_URL}/families`,
     element: <PageGenericValveFamilies />
   },
   {
-    path: '/models',
+    path: `${import.meta.env.BASE_URL}/models`,
     element: <PageGenericValveModel />
   },
   {
-    path: '/tests',
+    path: `${import.meta.env.BASE_URL}/tests`,
     element: <PageGenericTest />
   },
   {
-    path: '/families/add',
+    path: `${import.meta.env.BASE_URL}/families/add`,
     element: <PageAddValveFamily />
   },
   {
-    path: '/families/:familyID',
+    path: `${import.meta.env.BASE_URL}/families/:familyID`,
     element: <PageValveFamily />
   },
   {
-    path: '/models/add/:familId?',
+    path: `${import.meta.env.BASE_URL}/models/add/:familId?`,
     element: <PageAddValveModel />
   },
   {
-    path: '/models/:modelID',
+    path: `${import.meta.env.BASE_URL}/models/:modelID`,
     element: <PageValveModel />
   },
   {
-    path: '/instances/add/:modelId?',
+    path: `${import.meta.env.BASE_URL}/instances/add/:modelId?`,
     element: <PageAddValveInstance />
   },
   {
-    path: '/instances/:instanceID',
+    path: `${import.meta.env.BASE_URL}/instances/:instanceID`,
     element: <PageValveInstance />
   },
   {
-    path: '/tests/:testID',
+    path: `${import.meta.env.BASE_URL}/tests/:testID`,
     element: <PageTest />
   },
   {

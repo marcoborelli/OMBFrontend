@@ -8,7 +8,7 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={img_url || "/noimage.jpg"}
+                    image={img_url || `${import.meta.env.BASE_URL}/noimage.jpg`}
                     alt={base_code}
                     sx={{
                         maxWidth: '100%',
@@ -16,7 +16,7 @@ export default function CardValveFamily({ base_code, img_url, theoric_values, re
                         objectFit: 'none'
                     }}
                     onError={(e) => {
-                        e.target.src = "/noimage.jpg"
+                        e.target.src = `${import.meta.env.BASE_URL}/noimage.jpg`
                     }}
                 />
                 <CardContent>
