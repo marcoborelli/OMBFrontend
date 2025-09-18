@@ -16,54 +16,56 @@ import PageError404 from './pages/PageError404'
 
 const router = createBrowserRouter([
   {
-    path: `${import.meta.env.BASE_URL}/`,
+    path: `/`,
     element: <PageGenericValveFamilies />
   },
   {
-    path: `${import.meta.env.BASE_URL}/families`,
+    path: `/families`,
     element: <PageGenericValveFamilies />
   },
   {
-    path: `${import.meta.env.BASE_URL}/models`,
+    path: `/models`,
     element: <PageGenericValveModel />
   },
   {
-    path: `${import.meta.env.BASE_URL}/tests`,
+    path: `/tests`,
     element: <PageGenericTest />
   },
   {
-    path: `${import.meta.env.BASE_URL}/families/add`,
+    path: `/families/add`,
     element: <PageAddValveFamily />
   },
   {
-    path: `${import.meta.env.BASE_URL}/families/:familyID`,
+    path: `/families/:familyID`,
     element: <PageValveFamily />
   },
   {
-    path: `${import.meta.env.BASE_URL}/models/add/:familId?`,
+    path: `/models/add/:familId?`,
     element: <PageAddValveModel />
   },
   {
-    path: `${import.meta.env.BASE_URL}/models/:modelID`,
+    path: `/models/:modelID`,
     element: <PageValveModel />
   },
   {
-    path: `${import.meta.env.BASE_URL}/instances/add/:modelId?`,
+    path: `/instances/add/:modelId?`,
     element: <PageAddValveInstance />
   },
   {
-    path: `${import.meta.env.BASE_URL}/instances/:instanceID`,
+    path: `/instances/:instanceID`,
     element: <PageValveInstance />
   },
   {
-    path: `${import.meta.env.BASE_URL}/tests/:testID`,
+    path: `/tests/:testID`,
     element: <PageTest />
   },
   {
     path: '*',
     element: <PageError404 />
   }
-])
+],
+  { basename: import.meta.env.BASE_URL }
+)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />

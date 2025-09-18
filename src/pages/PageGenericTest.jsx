@@ -68,7 +68,7 @@ export default function PageGenericTest() {
                 <Grid container spacing={2} justifyContent="center">
                     {tests.map((d) => (
                         <Grid item key={d._id}>
-                            <Link to={`${import.meta.env.BASE_URL}/tests/${d._id}`} style={{ textDecoration: 'none' }}>
+                            <Link to={`/tests/${d._id}`} style={{ textDecoration: 'none' }}>
                                 <CardTest instance_id={d.instance_id} timestamp={d.timestamp} arr_data={d.data} />
                             </Link>
                         </Grid>

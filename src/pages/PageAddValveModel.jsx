@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import { Container, Grid, Paper } from '@mui/material'
 import Navbar from '../components/Navbar'
 import AddValveModel from '../components/AddValveModel'
@@ -34,7 +34,7 @@ export default function PageAddValveModel() {
             console.error('Error adding new valve model', error);
         }
 
-        window.location.href = `${import.meta.env.BASE_URL}/models`
+        <Navigate to={`/models`} />
     }
 
 

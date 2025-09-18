@@ -119,7 +119,7 @@ export default function PageValveModel() {
                                 fullWidth
                             />
 
-                            <Link to={`${import.meta.env.BASE_URL}/families/${valve.valve_family._id}`}>
+                            <Link to={`/families/${valve.valve_family._id}`}>
                                 <TextField
                                     label="Valve Family"
                                     value={valve.valve_family._id}
@@ -138,15 +138,17 @@ export default function PageValveModel() {
                     <Grid item style={{ paddingTop: '3vh', paddingBottom: '3vh', display: 'flex', justifyContent: 'center' }}>
                         <Stack spacing={1} direction="row" sx={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
                             <Searchbar api_endpoint='api/instances/all' bar_width='75%' default_text='Find a valve model instance' onChange_func={filterInstances} />
-                            <IconButton aria-label="add instance" size="large" href={`${import.meta.env.BASE_URL}/instances/add/${valve._id}`}>
-                                <AddIcon />
-                            </IconButton>
+                            <Link to={`/instances/add/${valve._id}`} style={{ textDecoration: 'none' }}>
+                                <IconButton aria-label="add instance" size="large">
+                                    <AddIcon />
+                                </IconButton>
+                            </Link>
                         </Stack>
                     </Grid>
                     <Grid container spacing={2} justifyContent="center" style={{ maxHeight: '70vh', overflowY: 'auto', paddingTop: '3vh', }}>
                         {filteredInstances.map((instance) => (
                             <Grid item key={instance._id}>
-                                <Link to={`${import.meta.env.BASE_URL}/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
+                                <Link to={`/instances/${instance._id}`} style={{ textDecoration: 'none' }}>
                                     <CardValveInstance serial_number={instance._id} job_number={instance.job_number} key={`${instance._id}`} />
                                 </Link>
                             </Grid>

@@ -1,4 +1,5 @@
 import { Container, Grid, Paper } from '@mui/material'
+import { Navigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import AddValveFamily from '../components/AddValveFamily'
 import api from '../services/api'
@@ -11,7 +12,7 @@ export default function PageAddValveFamily() {
             console.error('Error adding new family', error);
         }
 
-        window.location.href = `${import.meta.env.BASE_URL}/families`
+        <Navigate to={`/families`} />
     }
 
     return (

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './PageError404.css'
 
 export default function PageError404() {
@@ -16,7 +17,10 @@ export default function PageError404() {
                                 <div className="contant_box_404">
                                     <h3 className="h2">Sembra che ti sia perso</h3>
                                     <p>la pagina che stai cercando non esiste</p>
-                                    <a href={`${import.meta.env.BASE_URL}/`} className="link_404">Go to Home</a>
+                                    <Link to={`/`} style={{ textDecoration: 'none' }}>
+                                        <p className="link_404">Go to Home</p>
+                                    </Link>
+
                                 </div>
                             </div>
                         </div>

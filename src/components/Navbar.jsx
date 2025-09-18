@@ -71,7 +71,7 @@ function Navbar() {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Link to={`${import.meta.env.BASE_URL}/${page}`} style={{ textDecoration: 'none' }}>
+                                    <Link to={`/${page}`} style={{ textDecoration: 'none' }}>
                                         <Typography textAlign="center">{page.toUpperCase()}</Typography>
                                     </Link>
                                 </MenuItem>
@@ -81,7 +81,7 @@ function Navbar() {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Link to={`${import.meta.env.BASE_URL}/${page}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Link to={`/${page}`} key={page} style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white', display: 'block' }}>{page}</Button>
                             </Link>
                         ))}
