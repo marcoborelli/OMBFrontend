@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Container, Grid, Paper } from '@mui/material'
 import Navbar from '../components/Navbar'
 import AddValveInstance from '../components/AddValveInstance'
@@ -10,6 +10,8 @@ export default function PageAddValveInstance() {
     const { modelId } = useParams();
     const [modelsIds, setModelIds] = useState()
     const [loading, setLoading] = useState(true)
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,7 +36,7 @@ export default function PageAddValveInstance() {
             console.error('Error adding new valve model', error);
         }
 
-        <Navigate to={`/instances/${to_insert._id}`} />
+        navigate(`/instances/${to_insert._id}`);
     }
 
 

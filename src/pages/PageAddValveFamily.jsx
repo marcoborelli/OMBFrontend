@@ -1,10 +1,12 @@
 import { Container, Grid, Paper } from '@mui/material'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import AddValveFamily from '../components/AddValveFamily'
 import api from '../services/api'
 
 export default function PageAddValveFamily() {
+    const navigate = useNavigate();
+
     const addNewFamily = async (to_insert) => {
         try {
             await api.post('api/families/add', to_insert);
@@ -12,7 +14,7 @@ export default function PageAddValveFamily() {
             console.error('Error adding new family', error);
         }
 
-        <Navigate to={`/families`} />
+        navigate(`/families`);
     }
 
     return (
